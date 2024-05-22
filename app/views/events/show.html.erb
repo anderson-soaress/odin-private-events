@@ -3,3 +3,17 @@
 
 <p>Local: <%= @event.local %></p>
 <p>Date: <%= @event.date %></p>
+
+<p>Participants: </p>
+
+<% if @event.participants.empty? %>
+  <p>No participants yet.</p>
+<% else %>
+  <ul>
+    <% @event.participants.each do |participant| %>
+      <li><%= participant.name %></li>
+    <% end  %>
+  </ul>
+<% end %>
+
+<%= button_to "Confirm participations", participate_events_path, params: {id: params[:id]}, method: :post %>

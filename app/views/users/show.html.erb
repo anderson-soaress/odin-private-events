@@ -10,3 +10,7 @@
         <% end %>
     </ul>
 <% end %>
+
+<% @user.events_participations.each do |participations| %>
+    <p><%= participations.title %> <%= participations.date  %> <%= participations.creator.name  %> </p>
+<% end %>

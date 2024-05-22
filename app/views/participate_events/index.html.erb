@@ -1,0 +1,9 @@
+<% if @participate_events.empty? %>
+    <p>No events yet</p>
+<% else %>
+    <ul>
+        <% @participate_events.each do |event| %>
+            <li><h3><%= User.find(event.user_id).name %> in <%= Event.find(event.event_id).title %></h3> </li>
+        <% end %>
+    </ul>
+<% end %>

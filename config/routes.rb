@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :users, only: [:show]
+  resources :participate_events, only: [:index, :create]
   # Defines the root path route ("/")
   root "events#index"
 end
