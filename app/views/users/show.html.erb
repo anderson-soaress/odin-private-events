@@ -1,8 +1,9 @@
 <h1><%= @user.name %> profile</h1>
 
+<h2>Created events</h2>
 <% @events = @user.created_events %>
 <% if @events.empty? %>
-    <p>No events yet by <%= @user.name %></p>
+    <p>No events created</p>
 <% else %>
     <ul>
         <% @events.each do |event| %>
@@ -11,6 +12,13 @@
     </ul>
 <% end %>
 
-<% @user.events_participations.each do |participations| %>
-    <p><%= participations.title %> <%= participations.date  %> <%= participations.creator.name  %> </p>
+<h2>Participation in events</h2>
+
+<% if  @user.events_participations.empty? %>
+    <p>No participations in events</p>
+<% else %>
+    <% @user.events_participations.each do |participations| %>
+        <p><%= participations.title %> by <%= participations.creator.name  %> </p>
+    <% end %>
 <% end %>
+
