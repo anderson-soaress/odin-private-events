@@ -5,7 +5,7 @@
 <% else %>
     <ul>
         <% @events.each do |event| %>
-            <li><h3><%= event.title %></h3> <p><%= event.local %></p> <p><%=event.date  %></p> <p><%= event.user.name %></p></li>
+            <li><h3><%= event.title %></h3> <p><%= event.local %></p> <p><%=event.date  %></p> <p><%= event.creator.name %></p></li>
         <% end %>
     </ul>
 <% end %>
