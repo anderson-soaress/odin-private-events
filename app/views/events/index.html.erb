@@ -1,0 +1,13 @@
+<h1>Events</h1>
+
+<% if @events.empty? %>
+    <p>No events yet</p>
+<% else %>
+    <ul>
+        <% @events.each do |event| %>
+            <li><h3><%= event.title %></h3> <p><%= event.local %></p> <p><%=event.date  %></p> <p><%= event.user.name %></p></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= link_to "Add an event", new_event_path%>
