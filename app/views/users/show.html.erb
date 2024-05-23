@@ -1,12 +1,12 @@
 <h1><%= @user.name %> profile</h1>
 
 <h2>Created events</h2>
-<% @events = @user.created_events %>
-<% if @events.empty? %>
+<% events = @user.created_events %>
+<% if events.empty? %>
     <p>No events created</p>
 <% else %>
     <ul>
-        <% @events.each do |event| %>
+        <% events.each do |event| %>
             <li><h3><%= event.title %></h3> <p><%= event.local %></p> <p><%=event.date  %></p></li>
         <% end %>
     </ul>
@@ -14,10 +14,12 @@
 
 <h2>Participation in events</h2>
 
-<% if  @user.events_participations.empty? %>
+<% events_participations = @user.events_participations %> 
+
+<% if events_participations.empty? %>
     <p>No participations in events</p>
 <% else %>
-    <% @user.events_participations.each do |participations| %>
+    <% events_participations.each do |participations| %>
         <p><%= participations.title %> by <%= participations.creator.name  %> </p>
     <% end %>
 <% end %>
