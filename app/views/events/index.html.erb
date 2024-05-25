@@ -3,11 +3,30 @@
 <% if @events.empty? %>
     <p>No events yet</p>
 <% else %>
-    <ul>
-        <% @events.each do |event| %>
-            <li><h3><%= event.title %> by <%= event.creator.name %></h3> <p><%= link_to "See more", event %></p></li>
-        <% end %>
-    </ul>
+
+    <% if Event.upcoming_events.empty? %>
+        <p>No upcoming events.</p>
+    <% else %>
+        <ul>
+            <h2>Upcoming events</h1>
+            <% Event.upcoming_events.each do |upcoming| %>
+                <li><h3><%= upcoming.title %> by <%= upcoming.creator.name %></h3> <p><%= link_to "See more", upcoming %></p></li>
+            <% end %>
+        </ul>
+    <% end %>
+    
+    
+    <% if Event.past_events.empty? %>
+        <p>No past events.</p>
+    <% else %>
+        <ul>
+            <br><h2>Past events</h2>
+            <% Event.past_events.each do |past| %>
+                <li><h3><%= past.title %> by <%= past.creator.name %></h3> <p><%= link_to "See more", past %></p></li>
+            <% end %>
+        </ul>
+    <% end %>
+    
 <% end %>
 
 <%= link_to "Add an event", new_event_path%>
