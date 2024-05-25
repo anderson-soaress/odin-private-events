@@ -4,11 +4,6 @@ class Event < ApplicationRecord
   has_many :participate_events, foreign_key: :event_id
   has_many :participants, through: :participate_events, source: :user
 
-  def self.past_events
-    Event.where(date: ..(Time.now))
-  end
-
-  def self.upcoming_events
-    Event.where(date: (Time.now)..)
-  end
+  scope :upcoming_events, -> { where(date: (Time.now)..) }
+  scope :past_events, -> { where(date: ..(Time.now)) }
 end
