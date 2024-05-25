@@ -20,7 +20,8 @@
     <p>No participations in events</p>
 <% else %>
     <% events_participations.each do |participations| %>
-        <p><%= participations.title %> by <%= participations.creator.name  %> </p>
+        <p><%= participations.title %> by <%= participations.creator.name%> 
+        <%= button_to "Remove participation", participate_event_path, params: {user_id: current_user.id, event_id: participations.id}, method: :delete %> </p>
     <% end %>
 <% end %>
 
