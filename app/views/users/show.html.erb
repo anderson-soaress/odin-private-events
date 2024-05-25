@@ -8,6 +8,8 @@
     <ul>
         <% events.each do |event| %>
             <li><h3><%= event.title %></h3> <p><%= event.local %></p> <p><%= event.date %></p></li>
+            <%= link_to "Edit event", edit_event_path(event) %>
+            <%= button_to "Delete event", event_path(event), method: :delete %>
         <% end %>
     </ul>
 <% end %>
